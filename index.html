@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circuit Passport — verify any TapeOut circuit or processor on X Layer</title>
+<meta name="description" content="Read-only verifier for TapeOut circuits and processors on X Layer. Paste an address, get a passport: identity, owner, gates, price, container status and safety checks. No wallet needed.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true">▦</span>
+      <span class="brand-text">Circuit<strong>Passport</strong></span>
+    </a>
+    <div class="header-meta">
+      <span class="badge badge-readonly">Read-only · no wallet · no transactions</span>
+      <span class="chain-status" id="chainStatus">connecting to X Layer…</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Verify a TapeOut circuit before you trust it.</h1>
+    <p class="lede">
+      TapeOut turns transistors into on-chain circuits on X Layer. Anyone can deploy a
+      look-alike contract — but only real processors are registered in the TapeOut factory.
+      Paste a processor or circuit address and this page reads the chain directly and
+      issues a passport: identity, owner, gate count, mint price, container status and
+      plain-language safety checks for secondary buyers.
+    </p>
+  </section>
+
+  <section class="panel" id="lookupPanel">
+    <form id="lookupForm" autocomplete="off">
+      <label for="query">Processor / circuit contract address, CPU index, or <em>circuit.cpu</em></label>
+      <div class="form-row">
+        <input id="query" name="query" type="text" spellcheck="false"
+               placeholder="0x… contract address · 268 (CPU index) · 3.268 (circuit 3 of CPU 268)">
+        <input id="tokenId" name="tokenId" type="text" inputmode="numeric" spellcheck="false"
+               placeholder="Circuit # (optional)" aria-label="Circuit token ID (optional)">
+        <button type="submit" id="lookupBtn">Read passport</button>
+      </div>
+      <p class="form-hint">Reads happen in your browser against public X Layer RPC endpoints. Nothing is uploaded, cached or simulated — if a read fails, the passport says so.</p>
+    </form>
+  </section>
+
+  <section id="examples">
+    <h2>Verified live examples — tap one, watch it read the chain</h2>
+    <div class="cards" id="exampleCards"></div>
+  </section>
+
+  <section id="result" aria-live="polite"></section>
+
+  <section class="panel stats-panel">
+    <h2>TapeOut on X Layer, right now</h2>
+    <div class="stats" id="protocolStats"><p class="muted">Reading live protocol data…</p></div>
+    <p class="muted small">Core contracts (from TapeOut's official app configuration, re-verified on-chain by this page's reads):
+      factory <a id="factoryLink" target="_blank" rel="noopener"></a> ·
+      circuit opener <a id="openerLink" target="_blank" rel="noopener"></a> ·
+      BEM token <a id="bemLink" target="_blank" rel="noopener"></a>
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>What a passport can — and cannot — tell you</h2>
+    <ul class="plain">
+      <li><strong>It proves registration.</strong> The factory's on-chain registry is the ground truth for "is this a genuine TapeOut processor". Imitation contracts fail that check.</li>
+      <li><strong>It proves consistency.</strong> A genuine processor's circuit and transistor contracts point at each other, and minted supply never exceeds the cap — both are checked from live reads.</li>
+      <li><strong>It is not an audit.</strong> A passport says nothing about whether a circuit's logic is correct, fair or safe to interact with — only what the contracts publicly expose.</li>
+      <li><strong>Trust, but verify.</strong> This page reads through public RPC endpoints. For a high-value purchase, cross-check the same addresses on the <a href="https://www.oklink.com/xlayer" target="_blank" rel="noopener">OKLink explorer</a>.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Circuit Passport — a read-only tool built for the X Layer TapeOut Accelerate program.
+    It uses TapeOut's on-chain data on X Layer; it is not affiliated with TapeOut or OKX.
+    No wallet connection, no tracking, no transactions.</p>
+  </div>
+</footer>
+
+<script src="js/chain.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
