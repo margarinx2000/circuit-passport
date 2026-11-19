@@ -1,0 +1,122 @@
+/* Circuit Passport — no external assets, system fonts only. */
+:root {
+  --bg: #0c0e12;
+  --panel: #14171e;
+  --panel-2: #191d26;
+  --line: #262c38;
+  --text: #e8ebf0;
+  --muted: #9aa3b2;
+  --accent: #ffb02e;
+  --pass: #3ecf7a;
+  --fail: #ff5d5d;
+  --warn: #ffb02e;
+  --info: #6db3ff;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+/* header */
+.site-header { border-bottom: 1px solid var(--line); background: var(--panel); }
+.header-inner { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 20px; }
+.brand:hover { text-decoration: none; }
+.brand-mark { color: var(--accent); font-size: 24px; }
+.header-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.badge { border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--muted); }
+.badge-readonly { color: var(--pass); border-color: #234534; }
+.chain-status { font-size: 12.5px; color: var(--muted); }
+
+/* hero + panels */
+.hero { padding: 28px 0 6px; }
+.hero h1 { font-size: clamp(26px, 5vw, 38px); line-height: 1.15; margin: 0 0 10px; }
+.lede { color: var(--muted); max-width: 68ch; margin: 0; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 18px 0; }
+.panel h2 { margin-top: 0; font-size: 19px; }
+section h2 { font-size: 19px; }
+.plain { padding-left: 20px; color: var(--muted); }
+.plain li { margin: 6px 0; }
+.plain strong { color: var(--text); }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.error-text { color: var(--fail); }
+
+/* form */
+#lookupForm label { display: block; font-weight: 600; margin-bottom: 8px; }
+.form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.form-row input {
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+  color: var(--text); padding: 11px 12px; font-size: 15px; min-width: 0;
+}
+#query { flex: 1 1 320px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; }
+#tokenId { flex: 0 1 170px; }
+button {
+  background: var(--accent); color: #1a1405; border: 0; border-radius: 10px;
+  padding: 11px 18px; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+button:hover { filter: brightness(1.07); }
+button:disabled { opacity: .55; cursor: wait; }
+button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); font-weight: 600; }
+.form-hint { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+
+/* example cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.card h3 { margin: 0 0 6px; font-size: 16.5px; }
+.card p { color: var(--muted); margin: 0 0 12px; font-size: 14.5px; }
+.card-actions { display: flex; flex-direction: column; gap: 8px; }
+.card-actions button { width: 100%; }
+
+/* passport */
+.passport { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin: 18px 0; }
+.passport-kicker { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.passport-head h2 { margin: 4px 0 2px; font-size: 26px; word-break: break-word; }
+.passport-sub { color: var(--muted); }
+.verdict { border-radius: 10px; padding: 12px 14px; font-weight: 700; margin: 14px 0; }
+.verdict-pass { background: #10301d; color: var(--pass); border: 1px solid #1f5136; }
+.verdict-fail { background: #3a1414; color: var(--fail); border: 1px solid #5c2222; }
+.verdict-warn { background: #38300f; color: var(--warn); border: 1px solid #5c4d1a; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 12px 0; }
+.field { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+.field-label { color: var(--muted); font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+.field-value { font-weight: 600; word-break: break-word; }
+.addr { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.addr-text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 400; word-break: break-all; }
+.addr a { font-size: 12.5px; white-space: nowrap; }
+.circuit { border-top: 1px dashed var(--line); margin-top: 16px; padding-top: 6px; }
+.circuit h3, .checks h3 { font-size: 18px; }
+
+/* checks */
+.checks { border-top: 1px dashed var(--line); margin-top: 16px; padding-top: 6px; }
+.check { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.check:last-child { border-bottom: 0; }
+.check-icon { flex: 0 0 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; margin-top: 2px; }
+.check-pass .check-icon { background: #10301d; color: var(--pass); }
+.check-fail .check-icon { background: #3a1414; color: var(--fail); }
+.check-warn .check-icon { background: #38300f; color: var(--warn); }
+.check-info .check-icon { background: #12283f; color: var(--info); }
+.check-title { font-weight: 700; }
+.check-detail { color: var(--muted); font-size: 14.5px; }
+
+.share-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.copy-btn { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+
+/* stats + footer */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.site-footer { border-top: 1px solid var(--line); margin-top: 28px; padding: 18px 0 26px; color: var(--muted); font-size: 13.5px; }
+
+#result { scroll-margin-top: 12px; }
+@media (max-width: 560px) {
+  .form-row { flex-direction: column; }
+  #tokenId { flex: 1 1 auto; }
+  .form-row button { width: 100%; }
+}
