@@ -374,3 +374,5 @@ const CircuitPassportChain = {
   fmtUnits, fmtInt, shortAddr, explorerAddr, isAddress,
 };
 if (typeof module !== "undefined" && module.exports) module.exports = CircuitPassportChain;
+
+if (typeof window !== "undefined") window.CircuitPassportChain = CircuitPassportChain;
